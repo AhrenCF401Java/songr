@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Home</h1>
+    <h2>Welcome, the word below should be capitalized</h2>
+    <span th:if="${word != null}" th:text="${word}"></span>
+    <span th:if="${word == null}" th:text="No word entered"></span>
+</body>
+</html>
