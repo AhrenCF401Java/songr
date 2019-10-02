@@ -1,5 +1,6 @@
 package com.ahrenswett.songr;
 
+import com.ahrenswett.songr.models.Album;
 import org.junit.Before;
 import org.junit.Test;
 
