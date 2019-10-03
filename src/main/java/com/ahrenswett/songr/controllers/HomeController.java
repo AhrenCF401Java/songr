@@ -42,7 +42,7 @@ public class HomeController {
     public RedirectView addTheAlbums(String title, String artist, int songCount, int length, String imgURL){
         Album album =new Album(title, artist, songCount, length, imgURL);
         albumRepository.save(album);
-        return new RedirectView("albums");
+        return new RedirectView("/albums");
     }
 
 }
