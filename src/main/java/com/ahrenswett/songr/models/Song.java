@@ -9,9 +9,9 @@ public class Song {
             @GeneratedValue(strategy = GenerationType.IDENTITY)
             long id;
 
-    public String title;
-    public int track;
-    public double length;
+    String title;
+    int track;
+    double length;
 
     @ManyToOne
     Album album;
@@ -25,4 +25,43 @@ public class Song {
     }
 
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getTrack() {
+        return track;
+    }
+
+    public void setTrack(int track) {
+        this.track = track;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
 }

@@ -2,6 +2,8 @@ package com.ahrenswett.songr.controllers;
 
 import com.ahrenswett.songr.models.Album;
 import com.ahrenswett.songr.models.AlbumRepository;
+import com.ahrenswett.songr.models.Song;
+import com.ahrenswett.songr.models.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,8 @@ import java.util.List;
 public class HomeController {
     @Autowired
     AlbumRepository albumRepository;
-//    @Autowired
-//    SongRepository songRepository;
+    @Autowired
+    SongRepository songRepository;
 
 
     @GetMapping("/hello/{word}")
@@ -39,8 +41,15 @@ public class HomeController {
 
     @GetMapping("/albums/{id}")
     public String detailedAlbumDisplay(@PathVariable Long id, Model m){
-        m.addAttribute("album",albumRepository.findById(id));
+        m.addAttribute("album",albumRepository.getOne(id));
         return "album_details";
+    }
+
+    @GetMapping("/songs")
+    public String songs(Model m){
+        List<Song> allSongs = songRepository.findAll();
+        m.addAttribute("allSongs",allSongs);
+        return"songs";
     }
 
     @PostMapping("/albums")
@@ -50,7 +59,10 @@ public class HomeController {
         return new RedirectView("/albums/{id}");
     }
 
-//    @PostMapping("/songs")
-//    public RedirectView
+    @PostMapping("/albums/{id}")
+    public String addNewSong(@PathVariable Long id, Model m){
+        m.addAttribute("album",albumRepository.getOne(id));
+        return "album_details";
+    }
 
 }

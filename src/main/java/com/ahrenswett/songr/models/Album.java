@@ -6,8 +6,6 @@ import java.util.List;
 
 @Entity
 public class Album {
-
-
     @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
             Long id;

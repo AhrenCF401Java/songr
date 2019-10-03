@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Albums</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1> Songs </h1>
+            <div th:each="song : ${allSongs}">
+                <a th:href="${'/songs/' + song.id}" th:text="${song.title}"></a>
+                <p th:text="${song.artist}"></p>
+            </div>
+        </div>
+    </body>
+</html>
