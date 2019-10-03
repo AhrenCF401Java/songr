@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.awt.image.Kernel;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
 public class HomeController {
     @Autowired
     AlbumRepository albumRepository;
+//    @Autowired
+//    SongRepository songRepository;
 
 
     @GetMapping("/hello/{word}")
@@ -38,11 +37,20 @@ public class HomeController {
         return "albums";
     }
 
+    @GetMapping("/albums/{id}")
+    public String detailedAlbumDisplay(@PathVariable Long id, Model m){
+        m.addAttribute("album",albumRepository.findById(id));
+        return "album_details";
+    }
+
     @PostMapping("/albums")
     public RedirectView addTheAlbums(String title, String artist, int songCount, int length, String imgURL){
         Album album =new Album(title, artist, songCount, length, imgURL);
         albumRepository.save(album);
-        return new RedirectView("/albums");
+        return new RedirectView("/albums/{id}");
     }
+
+//    @PostMapping("/songs")
+//    public RedirectView
 
 }
