@@ -1,4 +1,4 @@
-package com.ahrenswett.songr;
+package com.ahrenswett.songr.controllers;
 
 import com.ahrenswett.songr.models.Album;
 import com.ahrenswett.songr.models.AlbumRepository;
@@ -11,6 +11,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.awt.image.Kernel;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -29,42 +31,7 @@ public class HomeController {
     @GetMapping("/albums")
     public String albums(Model m){
 // create an arraylist to hold albums
-        ArrayList<Album> allAlbums= new ArrayList<>();
-//        create new album
-        Album karuna = new Album(
-                "Karuna",
-                "David Starfire",
-                10,
-                2700,
-                "https://f4.bcbits.com/img/a1430017819_10.jpg"
-        );
-//        add album to arraylist
-        allAlbums.add(karuna);
-        albumRepository.save(karuna);
-
-
-        Album transmuteRelease = new Album(
-                "Transmute / Release",
-                "Whitebear",
-                4,
-                1200,
-                "https://f4.bcbits.com/img/a0913766110_10.jpg"
-        );
-        allAlbums.add(transmuteRelease);
-        albumRepository.save(transmuteRelease);
-
-
-        Album awoke = new Album(
-                "Awoke",
-                "Random Rab",
-                12,
-                4536,
-                "https://f4.bcbits.com/img/a1516753429_16.jpg"
-        );
-        allAlbums.add(awoke);
-        albumRepository.save(awoke);
-
-
+        List<Album> allAlbums= albumRepository.findAll();
 //        add the albums to the page
         m.addAttribute("allAlbums",allAlbums);
 //        return the data to the albums page
@@ -75,7 +42,7 @@ public class HomeController {
     public RedirectView addTheAlbums(String title, String artist, int songCount, int length, String imgURL){
         Album album =new Album(title, artist, songCount, length, imgURL);
         albumRepository.save(album);
-        return new RedirectView("/albums");
+        return new RedirectView("albums");
     }
 
 }
