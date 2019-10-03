@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -20,9 +21,8 @@ public class HomeController {
     AlbumRepository albumRepository;
 
 
-    @GetMapping("/hello")
-    public String capitolize(Model m){
-        String word = "llama";
+    @GetMapping("/hello/{word}")
+    public String capitolize(@PathVariable String word, Model m){
         m.addAttribute("word",word.toUpperCase());
         return "home";
     }
