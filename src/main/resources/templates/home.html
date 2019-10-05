@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Home</title>
 </head>
 <body>
@@ -9,14 +10,5 @@
     <h2>Welcome, the word below should be capitalized</h2>
     <span th:if="${word != null}" th:text="${word}"></span>
     <span th:if="${word == null}" th:text="No word entered"></span>
-
-    <form action="/albums" method="POST">
-        <input type="text" name="title"> Album Title
-        <input type="text" name="artist"> Artist
-        <input type="number" name="songCount"> Song Count
-        <input type="number" name="length"> Length
-        <input type="text" name="imgUrl"> Img URL
-        <input type="submit" value="album">
-    </form>
 </body>
 </html>

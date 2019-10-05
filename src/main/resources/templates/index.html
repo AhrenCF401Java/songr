@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter new album info</h1>
+        <form action="/albums" method="POST">
+            <input type="text" name="title" placeholder="Album Title">
+            <input type="text" name="artist" placeholder="Artist">
+            <input type="number" name="songCount" placeholder="Song Count">
+            <input type="number" name="length" placeholder="Length">
+            <input type="text" name="imgUrl" placeholder="Img URL">
+            <input type="submit" value="Add Album">
+        </form>
+
+        <h1> Albums </h1>
+        <div th:each="album : ${allAlbums}">
+            <a th:href="${'/albums/' + album.id}" th:text="${album.title}"></a>
+            <p th:text="${album.artist}"></p>
+        </div>
+    </div>
+
+</body>
+</html>

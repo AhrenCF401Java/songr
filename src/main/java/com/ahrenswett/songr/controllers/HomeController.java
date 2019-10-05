@@ -29,14 +29,14 @@ public class HomeController {
     }
 
 
-    @GetMapping("/albums")
+    @GetMapping("/")
     public String albums(Model m){
 // create an arraylist to hold albums
         List<Album> allAlbums= albumRepository.findAll();
 //        add the albums to the page
         m.addAttribute("allAlbums",allAlbums);
 //        return the data to the albums page
-        return "albums";
+        return "index";
     }
 
     @GetMapping("/albums/{id}")
@@ -56,13 +56,18 @@ public class HomeController {
     public RedirectView addTheAlbums(String title, String artist, int songCount, int length, String imgURL){
         Album album =new Album(title, artist, songCount, length, imgURL);
         albumRepository.save(album);
-        return new RedirectView("/albums/{id}");
+        return new RedirectView("/albums/" + album.getId());
     }
 
     @PostMapping("/albums/{id}")
-    public String addNewSong(@PathVariable Long id, Model m){
-        m.addAttribute("album",albumRepository.getOne(id));
-        return "album_details";
+    public RedirectView addNewSong(@PathVariable Long id, String title, int track, double length){
+        //find the album in the database
+        Album album = albumRepository.getOne(id);
+//        create a new song from the post data and connect it to the album
+        Song song = new Song(title, track, length, album);
+        songRepository.save(song);
+        return new RedirectView("/albums/" + id);
+
     }
 
 }
