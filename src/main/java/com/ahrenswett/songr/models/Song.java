@@ -3,7 +3,6 @@ package com.ahrenswett.songr.models;
 import javax.persistence.*;
 
 @Entity
-
 public class Song {
     @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,9 +12,10 @@ public class Song {
     int track;
     double length;
 
-    @ManyToOne
+    @ManyToOne ()
     Album album;
 
+    public Song() {}
 
     public Song(String title, int track, double length, Album album) {
         this.title = title;

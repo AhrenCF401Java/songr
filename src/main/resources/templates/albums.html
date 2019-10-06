@@ -7,11 +7,7 @@
     </head>
     <body>
         <div class="container">
-            <h1> Albums </h1>
-            <div th:each="album : ${allAlbums}">
-                <a th:href="${'/albums/' + album.id}" th:text="${album.title}"></a>
-                <p th:text="${album.artist}"></p>
-            </div>
+
         </div>
     </body>
 </html>

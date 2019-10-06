@@ -16,7 +16,7 @@ public class Album {
     int length;
     String imgURL;
 
-    @OneToMany
+    @OneToMany (mappedBy = "album")
     public List<Song> songs;
 
 
