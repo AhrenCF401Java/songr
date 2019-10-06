@@ -23,11 +23,11 @@ public class AlbumTest {
     public void constructor(){
         assertEquals(
                 "Transmute / Release",
-                transmuteRelease.title
+                transmuteRelease.getTitle()
         );
         assertEquals(
                 "Whitebear",
-                transmuteRelease.artist
+                transmuteRelease.getArtist()
         );
     }
 
